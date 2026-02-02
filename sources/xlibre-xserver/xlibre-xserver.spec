@@ -37,8 +37,6 @@ Source30:   xserver-sdk-abi-requires
 
 # From Debian use intel ddx driver only for gen4 and older chipsets
 Patch0:     06_use-intel-only-on-pre-gen4.diff
-# Default to xf86-video-modesetting on GeForce 8 and newer
-#Patch1:     xlibre-xserver-25.0.0.8-xfree86-use-modesetting-driver-by-default-on-GeForce.patch
 # Readd the xf86CheckRealOption function used by the downstream DPIScaleFactor
 # hack in the xlibre-xf86-input-libinput package
 Patch2:     xlibre-xserver-25.0.0.8-restore-xf86CheckRealOption.patch
