@@ -439,6 +439,10 @@ find %{buildroot} -type f -name '*.la' -delete
 
 
 %changelog
+* Wed Jan 28 2026 Anders da Silva Rytter Hansen <andersrh@users.noreply.github.com> - 25.1.1-1
+- Upgrade XLibre to version 25.1.1
+- Remove "Default to xf86-video-modesetting on GeForce 8 and newer" patch for now since it doesn't compile
+
 * Wed Aug 13 2025 Kevin Kofler <Kevin@tigcc.ticalc.org> - 25.0.0.8-2
 - Requires: xlibre-xf86-input-libinput instead of xorg-x11-drv-libinput
 - Fix URL tag
