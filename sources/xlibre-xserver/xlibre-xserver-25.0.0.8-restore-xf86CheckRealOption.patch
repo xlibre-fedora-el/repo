@@ -1,0 +1,48 @@
+From 688be2f9513049052ac2bbe4e896256a1c433379 Mon Sep 17 00:00:00 2001
+Message-Id: <688be2f9513049052ac2bbe4e896256a1c433379.1755130111.git.kevin.kofler@chello.at>
+From: Kevin Kofler <kevin.kofler@chello.at>
+Date: Thu, 14 Aug 2025 02:05:03 +0200
+Subject: [PATCH] Revert "xfree86: xf86Option: drop unused
+ xf86CheckRealOption()"
+
+This reverts commit acfb7b9e9602b83688c17c6faf257d9489fdf26f.
+
+The downstream DPIScaleFactor hack in the libinput driver needs this.
+---
+ hw/xfree86/common/xf86Opt.h    | 2 ++
+ hw/xfree86/common/xf86Option.c | 6 ++++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/hw/xfree86/common/xf86Opt.h b/hw/xfree86/common/xf86Opt.h
+index 18cb97c97..a9210aaed 100644
+--- a/hw/xfree86/common/xf86Opt.h
++++ b/hw/xfree86/common/xf86Opt.h
+@@ -84,6 +84,8 @@ extern _X_EXPORT double xf86SetPercentOption(XF86OptionPtr list,
+                                              const char *name, double deflt);
+ extern _X_EXPORT int xf86CheckIntOption(XF86OptionPtr optlist, const char *name,
+                                         int deflt);
++extern _X_EXPORT double xf86CheckRealOption(XF86OptionPtr optlist,
++                                            const char *name, double deflt);
+ extern _X_EXPORT char *xf86CheckStrOption(XF86OptionPtr optlist,
+                                           const char *name, const char *deflt);
+ extern _X_EXPORT int xf86CheckBoolOption(XF86OptionPtr list, const char *name,
+diff --git a/hw/xfree86/common/xf86Option.c b/hw/xfree86/common/xf86Option.c
+index d6cf97a59..5ec75150f 100644
+--- a/hw/xfree86/common/xf86Option.c
++++ b/hw/xfree86/common/xf86Option.c
+@@ -272,6 +272,12 @@ xf86CheckIntOption(XF86OptionPtr optlist, const char *name, int deflt)
+     return LookupIntOption(optlist, name, deflt, FALSE);
+ }
+ 
++double
++xf86CheckRealOption(XF86OptionPtr optlist, const char *name, double deflt)
++{
++    return LookupRealOption(optlist, name, deflt, FALSE);
++}
++
+ char *
+ xf86CheckStrOption(XF86OptionPtr optlist, const char *name, const char *deflt)
+ {
+-- 
+2.38.1
+
