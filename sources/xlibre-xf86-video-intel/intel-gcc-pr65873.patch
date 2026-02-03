@@ -1,0 +1,12 @@
+diff -Naur xf86-video-intel-ce811e78882d9f31636351dfe65351f4ded52c74.old/src/sna/compiler.h xf86-video-intel-ce811e78882d9f31636351dfe65351f4ded52c74/src/sna/compiler.h
+--- xf86-video-intel-ce811e78882d9f31636351dfe65351f4ded52c74.old/src/sna/compiler.h	2024-09-29 16:36:31.609127630 +0200
++++ xf86-video-intel-ce811e78882d9f31636351dfe65351f4ded52c74/src/sna/compiler.h	2024-09-29 16:36:46.132239072 +0200
+@@ -64,7 +64,7 @@
+ #endif
+ 
+ #if HAS_GCC(4, 6) && defined(__OPTIMIZE__)
+-#define fast __attribute__((optimize("Ofast")))
++#define fast __attribute__((optimize("O3")))
+ #else
+ #define fast
+ #endif
