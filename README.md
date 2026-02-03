@@ -1,6 +1,6 @@
 # XLibre for Fedora and Enterprise Linux
 
-This repo contains both source code and instructions on how to install XLibre packages on Fedora and Enterprise Linux distributions (RHEL, CentOS Stream, AlmaLinux, RockyLinux, OracleLinux etc.)
+This repo contains both source code and instructions on how to install XLibre packages on Fedora, CentOS Stream and Enterprise Linux distributions (RHEL, AlmaLinux, Rocky Linux, Oracle Linux etc.)
 
 # Installation instructions
 
