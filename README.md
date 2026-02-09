@@ -5,7 +5,7 @@ This repo contains both source code and instructions on how to install XLibre pa
 # Installation instructions
 
 **FEDORA WORKSTATION AND CENTOS STREAM**
-> *sudo dnf copr enable andersrh/xlibre-xserver*
+> *sudo dnf copr enable @xlibre/xlibre-xserver*
 
 > *sudo dnf install xlibre-xserver xlibre-xf86-input-libinput*
 
@@ -15,12 +15,12 @@ This repo contains both source code and instructions on how to install XLibre pa
 
 **Use the commands below to activate the RHEL+EPEL repo:**
 
-> *sudo wget https://copr.fedorainfracloud.org/coprs/andersrh/xlibre-xserver/repo/rhel+epel-10/andersrh-xlibre-xserver-rhel+epel-10.repo -O /etc/yum.repos.d/andersrh-xlibre-xserver-rhel+epel-10.repo*
+> *sudo wget https://copr.fedorainfracloud.org/coprs/g/xlibre/xlibre-xserver/repo/rhel+epel-10/group_xlibre-xlibre-xserver-rhel+epel-10.repo -O /etc/yum.repos.d/xlibre-xserver-rhel+epel-10.repo*
 
 > *sudo dnf install xlibre-xserver xlibre-xf86-input-libinput*
 
 **ALMALINUX 10 x86_64-v2**
 
-> *sudo wget https://copr.fedorainfracloud.org/coprs/andersrh/xlibre-xserver/repo/alma+epel-10/andersrh-xlibre-xserver-alma+epel-10.repo -O /etc/yum.repos.d/andersrh-xlibre-xserver-alma+epel-10.repo*
+> *sudo wget https://copr.fedorainfracloud.org/coprs/g/xlibre/xlibre-xserver/repo/alma+epel-10/group_xlibre-xlibre-xserver-alma+epel-10.repo -O /etc/yum.repos.d/xlibre-xserver-alma+epel-10.repo*
 
 > *sudo dnf install xlibre-xserver xlibre-xf86-input-libinput*
