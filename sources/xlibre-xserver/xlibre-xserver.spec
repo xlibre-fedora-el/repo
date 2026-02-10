@@ -19,7 +19,7 @@
 
 Summary:    XLibre X server
 Name:       xlibre-xserver
-Version:    25.1.1
+Version:    25.1.2
 Release:    1%{?dist}
 URL:        https://github.com/X11Libre/%{reponame}
 # SPDX
@@ -439,6 +439,9 @@ find %{buildroot} -type f -name '*.la' -delete
 
 
 %changelog
+* Tue Fed 10 2026 Anders da Silva Rytter Hansen <andersrh@users.noreply.github.com> - 25.1.2-1
+- Upgrade XLibre to version 25.1.2
+
 * Wed Jan 28 2026 Anders da Silva Rytter Hansen <andersrh@users.noreply.github.com> - 25.1.1-1
 - Upgrade XLibre to version 25.1.1
 - Remove "Default to xf86-video-modesetting on GeForce 8 and newer" patch for now since it doesn't compile
