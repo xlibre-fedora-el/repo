@@ -60,6 +60,9 @@ find %{buildroot} -name '*.la' -delete
 %{_mandir}/man4/amdgpu.4*
 
 %changelog
+* Tue Feb 10 2026 Anders da Silva Rytter Hansen <andersrh@users.noreply.github.com> - 25.1.2-1
+- Upgrade XLibre amd-gpu driver to version 25.1.0
+
 * Fri Aug 15 2025 Kevin Kofler <Kevin@tigcc.ticalc.org> - 23.0.0.4-1
 - Switch upstream to the X11Libre GitHub project
 - Rename package from xorg-x11-drv-amdgpu to xlibre-xf86-video-amdgpu

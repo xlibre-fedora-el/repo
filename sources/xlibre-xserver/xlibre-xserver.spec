@@ -439,7 +439,7 @@ find %{buildroot} -type f -name '*.la' -delete
 
 
 %changelog
-* Tue Fed 10 2026 Anders da Silva Rytter Hansen <andersrh@users.noreply.github.com> - 25.1.2-1
+* Tue Feb 10 2026 Anders da Silva Rytter Hansen <andersrh@users.noreply.github.com> - 25.1.2-1
 - Upgrade XLibre to version 25.1.2
 
 * Wed Jan 28 2026 Anders da Silva Rytter Hansen <andersrh@users.noreply.github.com> - 25.1.1-1
