@@ -6,7 +6,7 @@
 
 Summary:    XLibre evdev X11 input driver
 Name:       xlibre-xf86-input-evdev
-Version:    2.11.0.1
+Version:    25.0.0
 Release:    1%{?dist}
 URL :       https://github.com/X11Libre/%{reponame}
 License:    HPND-sell-variant AND MIT
@@ -64,12 +64,14 @@ XLibre evdev X11 input driver development files.
 
 %files devel
 %doc COPYING
-%{_libdir}/pkgconfig/xorg-evdev.pc
 %dir %{_includedir}/xorg
 %{_includedir}/xorg/evdev-properties.h
 
 
 %changelog
+* Wed Feb 18 2026 Anders da Silva Rytter Hansen <andersrh@users.noreply.github.com> - 25.0.0-1
+- Upgrade XLibre evdev driver to version 25.0.0
+
 * Wed Aug 13 2025 Kevin Kofler <Kevin@tigcc.ticalc.org> - 2.11.0.1-1
 - Switch upstream to the X11Libre GitHub project
 - Rename package from xorg-x11-drv-evdev to xlibre-xf86-input-evdev
