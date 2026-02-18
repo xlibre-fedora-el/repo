@@ -8,14 +8,14 @@
 
 Summary:    XLibre vmware X11 video driver
 Name:       xlibre-xf86-video-vmware
-Version:    13.4.0.1
+Version:    25.0.0
 Release:    1%{?dist}
 URL:        https://github.com/X11Libre/%{reponame}
 License:    MIT AND X11
 
 Source0:    https://github.com/X11Libre/%{reponame}/archive/refs/tags/%{name}-%{version}.tar.gz
 
-ExclusiveArch: %{ix86} x86_64 ia64
+ExclusiveArch: %{ix86} x86_64 x86_64_v2 ia64
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -57,6 +57,9 @@ find %{buildroot} -name "*.la" -delete
 %{_mandir}/man4/vmware.4*
 
 %changelog
+* Wed Feb 18 2026 Anders da Silva Rytter Hansen <andersrh@users.noreply.github.com> - 25.0.0-1
+- Upgrade XLibre vmware driver to version 25.0.0
+
 * Thu Aug 14 2025 Kevin Kofler <Kevin@tigcc.ticalc.org> - 13.4.0.1-1
 - Switch upstream to the X11Libre GitHub project
 - Rename package from xorg-x11-drv-vmware to xlibre-xf86-video-vmware
