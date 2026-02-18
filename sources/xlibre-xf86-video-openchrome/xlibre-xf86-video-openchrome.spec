@@ -3,41 +3,31 @@
 %global commit0 857d892b668b4737d41ef1b7f58fd45eac84d552
 %global date 20230328
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-#global tag %{version}
+%global tag %{version}
 
 %define tarball xf86-video-openchrome
 %define moduledir %(pkg-config xorg-server --variable=moduledir )
 %define driverdir %{moduledir}/drivers
 %global oldname xorg-x11-drv-openchrome
-
-%if 0%{?fedora}
-%define with_xvmc 0
-%else
-%define with_xvmc 1
-%endif
+%global reponame xf86-video-openchrome
 
 %undefine _hardened_build
 
 Summary:        X.Org X11 openchrome video driver rebuilt for XLibre
 Name:           xlibre-xf86-video-openchrome
-Version:        0.6.604%{!?tag:^%{date}git%{shortcommit0}}
-Release:        4%{?dist}
+Version:        25.0.0%{!?tag:^%{date}git%{shortcommit0}}
+Release:        1%{?dist}
 URL:            http://www.freedesktop.org/wiki/Openchrome/
 License:        MIT
 
 %if 0%{?tag:1}
-Source0:        http://xorg.freedesktop.org/archive/individual/driver/%{tarball}-%{version}.tar.bz2
+Source0:        https://github.com/X11Libre/%{reponame}/archive/refs/tags/%{name}-%{version}.tar.gz
 %else
 Source0:        %{tarball}-%{shortcommit0}.tar.bz2
 %endif
 Source1:        make-git-snapshot.sh
 
-# Hack to work around xf86ModeStatusToString removal from public headers
-Patch0:         xf86-video-openchrome-857d892b668b4737d41ef1b7f58fd45eac84d552-xf86ModeStatusToString-hack.patch
-# Use xf86newOption instead of the removed xf86NewOption
-Patch1:         xf86-video-openchrome-857d892b668b4737d41ef1b7f58fd45eac84d552-xf86newOption.patch
-
-ExclusiveArch:  %{ix86} x86_64
+ExclusiveArch:  %{ix86} x86_64 x86_64_v2
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -49,11 +39,6 @@ BuildRequires:  pkgconfig(libdrm) >= 2.2
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(pciaccess) >= 0.8.0
 BuildRequires:  pkgconfig(xorg-server)
-%if %{with_xvmc}
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xvmc)
-%endif
 
 Requires:       Xorg %(xserver-sdk-abi-requires ansic)
 Requires:       Xorg %(xserver-sdk-abi-requires videodrv)
@@ -71,12 +56,10 @@ X server.
 
 %prep
 %if 0%{?tag:1}
-%setup -q -n %{tarball}-%{version}
+%setup -q -n %{reponame}-%{name}-%{version}
 %else
 %setup -q -n %{tarball}-%{commit0}
 %endif
-%patch -P0 -p1 -b .xf86ModeStatusToString-hack
-%patch -P1 -p1 -b .xf86newOption
 
 %build
 autoreconf -vif
@@ -86,24 +69,21 @@ autoreconf -vif
 %install
 %make_install
 find %{buildroot} -name "*.la" -delete
-# Remove unversioned XvMC libraries
-rm -f %{buildroot}%{_libdir}/libchromeXvMC*.so
 
 %files
 %doc NEWS README
 %license COPYING
 %{driverdir}/openchrome_drv.so
-%if %{with_xvmc}
-%{_libdir}/libchromeXvMC.so.1
-%{_libdir}/libchromeXvMC.so.1.0.0
-%{_libdir}/libchromeXvMCPro.so.1
-%{_libdir}/libchromeXvMCPro.so.1.0.0
-%endif
 %{_mandir}/man4/openchrome.4.gz
 %{_sbindir}/via_regs_dump
 
 
 %changelog
+* Wed Feb 18 2026 Anders da Silva Rytter Hansen <andersrh@users.noreply.github.com> - 25.0.0-1
+- Use XLibre openchrome driver version 25.0.0 instead of Xorg's version
+- Remove patches which are now included upstream
+- Remove XvMC
+
 * Fri Aug 15 2025 Kevin Kofler <Kevin@tigcc.ticalc.org> - 0.6.604^20230328git857d892-4
 - Rename package from xorg-x11-drv-openchrome to xlibre-xf86-video-openchrome
 - Rebuild against XLibre
