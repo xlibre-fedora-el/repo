@@ -6,7 +6,7 @@
 
 Summary:    XLibre libinput X11 input driver
 Name:       xlibre-xf86-input-libinput
-Version:    25.0.0
+Version:    25.0.1
 Release:    1%{?dist}
 URL :       https://github.com/X11Libre/%{reponame}
 # SPDX
@@ -76,13 +76,17 @@ XLibre libinput X11 input driver development files.
 
 %files devel
 %doc COPYING
+%{_libdir}/pkgconfig/xorg-libinput.pc
 %dir %{_includedir}/xorg/
 %{_includedir}/xorg/libinput-properties.h
 
 
 %changelog
+* Wed Feb 18 2026 Anders da Silva Rytter Hansen <andersrh@users.noreply.github.com> - 25.0.1-1
+- Upgrade XLibre libinput driver to version 25.0.1
+
 * Mon Feb 02 2026 Anders da Silva Rytter Hansen <andersrh@users.noreply.github.com> - 25.0.0-1
-- Upgrade to version 25.0.0
+- Upgrade XLibre libinput driver to version 25.0.0
 
 * Thu Aug 14 2025 Kevin Kofler <Kevin@tigcc.ticalc.org> - 1.5.0.1-2
 - Reenable DPIScaleFactor patch
