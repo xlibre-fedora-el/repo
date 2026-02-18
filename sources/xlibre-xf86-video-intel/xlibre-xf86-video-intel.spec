@@ -21,7 +21,7 @@ Patch1:     0001-sna-Avoid-clobbering-output-physical-size-with-xf86O.patch
 Patch2:     intel-meson-has-present.patch
 
 
-ExclusiveArch: %{ix86} x86_64
+ExclusiveArch: %{ix86} x86_64 x86_64_v2
 
 BuildRequires:  cairo-devel
 BuildRequires:  gcc
