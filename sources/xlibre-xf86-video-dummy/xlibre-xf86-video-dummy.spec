@@ -8,7 +8,7 @@
 
 Summary:   XLibre dummy X11 video driver
 Name:      xlibre-xf86-video-dummy
-Version:   0.4.1.1
+Version:   25.0.0
 Release:   1%{?dist}
 URL:       https://github.com/X11Libre/%{reponame}
 License:   MIT AND X11
@@ -48,6 +48,9 @@ find %{buildroot} -name "*.la" -delete
 %{driverdir}/dummy_drv.so
 
 %changelog
+* Wed Feb 18 2026 Anders da Silva Rytter Hansen <andersrh@users.noreply.github.com> - 25.0.0-1
+- Upgrade XLibre dummy driver to version 25.0.0
+
 * Wed Aug 13 2025 Kevin Kofler <Kevin@tigcc.ticalc.org> - 0.4.1.1-1
 - Switch upstream to the X11Libre GitHub project
 - Rename package from xorg-x11-drv-dummy to xlibre-xf86-video-dummy
