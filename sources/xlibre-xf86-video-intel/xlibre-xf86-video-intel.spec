@@ -8,7 +8,7 @@
 
 Summary:   XLibre intel X11 video driver
 Name:      xlibre-xf86-video-intel
-Version:   3.0.0.2
+Version:   25.0.1
 Release:   1%{?dist}
 URL:       https://github.com/X11Libre/%{reponame}
 License:   MIT
@@ -18,6 +18,8 @@ Source0:   https://github.com/X11Libre/%{reponame}/archive/refs/tags/%{name}-%{v
 Patch0:	    intel-gcc-pr65873.patch
 # https://bugs.freedesktop.org/show_bug.cgi?id=96255#c11
 Patch1:     0001-sna-Avoid-clobbering-output-physical-size-with-xf86O.patch
+Patch2:     intel-meson-has-present.patch
+
 
 ExclusiveArch: %{ix86} x86_64
 
@@ -71,6 +73,8 @@ XLibre intel X11 video driver.
 %setup -q -n %{reponame}-%{name}-%{version}
 %patch -P0 -p1 -b .gcc-pr65873
 %patch -P1 -p1 -b .sna-avoid-clobbering-physical-size
+%patch -P2 -p1 -b .meson-has-present
+
 
 %build
 # This package causes LTO to thrash sucking up enormous amounts of VM.  This
@@ -97,7 +101,6 @@ XLibre intel X11 video driver.
     -D use-create2=false \
     -D uxa=true \
     -D valgrind=false \
-    -D xaa=true \
     -D xorg-module-dir="%(realpath -m --relative-to="%{_prefix}" "%{moduledir}")" \
     -D xvmc=true
 
@@ -121,6 +124,9 @@ rm -f %{buildroot}%{_libdir}/libI*XvMC.so
 %{_bindir}/intel-virtual-output
 
 %changelog
+* Wed Feb 18 2026 Anders da Silva Rytter Hansen <andersrh@users.noreply.github.com> - 25.0.1-1
+- Upgrade XLibre intel driver to version 25.0.1
+
 * Thu Aug 14 2025 Kevin Kofler <Kevin@tigcc.ticalc.org> - 3.0.0.2-1
 - Switch upstream to the X11Libre GitHub project
 - Rename package from xorg-x11-drv-intel to xlibre-xf86-video-intel

@@ -1,0 +1,69 @@
+--- xf86-video-intel-xlibre-xf86-video-intel-25.0.1/src/meson.build.orig
++++ xf86-video-intel-xlibre-xf86-video-intel-25.0.1/src/meson.build
+@@ -53,7 +53,13 @@
+ default_dri = get_option('default-dri')
+ config.set('DEFAULT_DRI_LEVEL', default_dri)
+ 
+-present = dependency('presentproto', required : true)
++with_present = get_option('present')
++has_present = false
++if with_present
++  present = dependency('presentproto', required : true)
++  has_present = true
++  config.set('HAVE_PRESENT', 1)
++endif
+ 
+ if get_option('backlight')
+   config.set('USE_BACKLIGHT', 1)
+@@ -137,6 +143,7 @@
+ 	      sources : intel_drv_sources,
+ 	      dependencies : intel_drv_deps,
+ 	      link_with : intel_drv_libs,
++	      include_directories : inc,
+ 	      c_args : [
+ 		'-DMAJOR_IN_SYSMACROS',
+ 		'-Wno-unused-parameter',
+--- xf86-video-intel-xlibre-xf86-video-intel-25.0.1/tools/meson.build.orig
++++ xf86-video-intel-xlibre-xf86-video-intel-25.0.1/tools/meson.build
+@@ -1,6 +1,7 @@
+ if with_tools
+   executable('intel-virtual-output',
+ 	     sources : 'virtual.c',
++	     include_directories : inc,
+ 	     dependencies : [
+ 	       dependency('x11', required : true),
+ 	       dependency('xext', required : true),
+@@ -46,6 +47,7 @@
+ 
+   executable('cursor',
+ 	     sources : 'cursor.c',
++	     include_directories : inc,
+ 	     dependencies : [
+ 	       dependency('x11', required : true),
+ 	       dependency('xfixes', required : true),
+@@ -60,6 +62,7 @@
+ if with_tools and with_dri3
+   executable('dri3info',
+ 	     sources : 'dri3info.c',
++	     include_directories : inc,
+ 	     dependencies : [
+ 	       dependency('x11-xcb', required : true),
+ 	       dependency('xcb-dri3', required : true),
+@@ -76,6 +79,7 @@
+ if with_backlight_helper
+   executable('xf86-video-intel-backlight-helper',
+ 	     sources : 'backlight_helper.c',
++	     include_directories : inc,
+ 	     install_dir : get_option('libexecdir'),
+ 	     install_mode : [ 'rws--x--x', 'root', 'root' ],
+ 	     c_args : [
+--- xf86-video-intel-xlibre-xf86-video-intel-25.0.1/xvmc/meson.build.orig
++++ xf86-video-intel-xlibre-xf86-video-intel-25.0.1/xvmc/meson.build
+@@ -11,6 +11,7 @@
+ 	       soversion : '1',
+ 	       version : '1.0.0',
+ 	       sources : xvmc_sources,
++	       include_directories : inc,
+ 	       dependencies : [
+ 		 dependency('threads', required : true),
+ 		 dependency('x11', required : true),
