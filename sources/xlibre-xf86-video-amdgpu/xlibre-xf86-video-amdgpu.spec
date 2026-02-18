@@ -2,13 +2,14 @@
 %global driverdir %{moduledir}/drivers
 %global oldname xorg-x11-drv-amdgpu
 %global reponame xf86-video-amdgpu
+%define _disable_source_fetch 0
 
 # XLibre cannot load hardened build
 %undefine _hardened_build
 
 Name:       xlibre-xf86-video-amdgpu
 Version:    25.1.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 
 Summary:    XLibre amdgpu X11 video driver
 License:    MIT
@@ -55,7 +56,7 @@ autoreconf -fiv
 find %{buildroot} -name '*.la' -delete
 
 %files
-%{driverdir}/amdgpu_drv.so
+%{driverdir}/video/amdgpu_drv.so
 %{_datadir}/X11/xorg.conf.d/10-amdgpu.conf
 %{_mandir}/man4/amdgpu.4*
 
