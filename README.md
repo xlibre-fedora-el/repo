@@ -4,7 +4,7 @@ This repo contains both source code and instructions on how to install XLibre pa
 
 # Installation instructions
 
-**FEDORA WORKSTATION AND CENTOS STREAM**
+**FEDORA WORKSTATION, CENTOS STREAM AND ENTERPRISE LINUX 9**
 > *sudo dnf copr enable @xlibre/xlibre-xserver*
 
 > *sudo dnf install xlibre-xserver xlibre-xf86-input-libinput*
